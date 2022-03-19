@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
-		"devBackend": "nodemon server.js",
+		"devBackend": "node server.js",
 		"devFrontend": "webpack --config webpack.dev.js --watch"
 	},
 	"keywords": [],
