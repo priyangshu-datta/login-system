@@ -114,28 +114,3 @@ function signin(props) {
 }
 
 export default signin;
-
-/* 
-
-<FloatingLabel
-	controlId="floatingInput"
-	label="Email address"
-	className="mb-3">
-	<Form.Control
-		type="email"
-		name="email"
-		placeholder="name@example.com"
-	/>
-</FloatingLabel>
-
-<FloatingLabel
-	controlId="floatingPassword"
-	label="Password">
-	<Form.Control
-		type="password"
-		name="password"
-		placeholder="Password"
-	/>
-</FloatingLabel>
-
-*/

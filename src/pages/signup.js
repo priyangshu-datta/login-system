@@ -7,7 +7,6 @@ import {
 	Input,
 	FormErrorMessage,
 	VStack,
-	Center,
 } from "@chakra-ui/react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as yup from "yup";
@@ -16,9 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 function signup() {
 	const [isLoading, setLoading] = useState(false);
-	const [key, setKey] = useState(
-		"butlering pampoen perrier endocasts rondure zigs astounds kabalism wisard ascitical"
-	);
+	const [key, setKey] = useState(null);
 	const navigate = useNavigate();
 	async function checkUsername(value) {
 		const response = await axios.post("/check", value);
@@ -196,32 +193,3 @@ function signup() {
 }
 
 export default signup;
-
-/* 
-
-
-sacralising noncoking instinctive datallers mensed perisarcs straightjacket cybercafes sanguifying mewed
-
-
-<FloatingLabel
-	controlId="floatingInput"
-	label="Email address"
-	className="mb-3">
-	<Form.Control
-		type="email"
-		name="email"
-		placeholder="name@example.com"
-	/>
-</FloatingLabel>
-
-<FloatingLabel
-	controlId="floatingPassword"
-	label="Password">
-	<Form.Control
-		type="password"
-		name="password"
-		placeholder="Password"
-	/>
-</FloatingLabel>
-
-*/
