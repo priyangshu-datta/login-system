@@ -26,7 +26,12 @@ router.route("/").post(async (req, res) => {
 	if (await validateSchema.isValid(user)) {
 		await User.updateOne(
 			{ uname },
-			{ password: await bcrypt.hash(password, process.env.ROUNDS) }
+			{
+				password: await bcrypt.hash(
+					password,
+					parseInt(process.env.ROUNDS)
+				),
+			}
 		);
 		return res.sendStatus(200);
 	} else {

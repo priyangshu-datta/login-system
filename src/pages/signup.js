@@ -6,6 +6,8 @@ import {
 	FormLabel,
 	Input,
 	FormErrorMessage,
+	VStack,
+	Center,
 } from "@chakra-ui/react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as yup from "yup";
@@ -14,7 +16,9 @@ import { useNavigate } from "react-router-dom";
 
 function signup() {
 	const [isLoading, setLoading] = useState(false);
-	const [key, setKey] = useState(null);
+	const [key, setKey] = useState(
+		"butlering pampoen perrier endocasts rondure zigs astounds kabalism wisard ascitical"
+	);
 	const navigate = useNavigate();
 	async function checkUsername(value) {
 		const response = await axios.post("/check", value);
@@ -143,17 +147,49 @@ function signup() {
 					</Card.Body>
 				</Card>
 			) : (
-				<div>
-					<div>
-						Note the security key <code>{key}</code>. It will be
-						used to reset your password
-					</div>
-					<form onSubmit={Home}>
-						<Button isLoading={isLoading} type="Submit">
-							Continue
-						</Button>
-					</form>
-				</div>
+				<Card className="m-auto mt-2 max-w-xl p-2">
+					<VStack>
+						<div className="text-center">
+							<strong>
+								The following security key will be used to reset
+								your password. Please keep it safe.
+							</strong>
+							<Card className="m-auto">
+								<Card.Body className="py-2 w-fit">
+									<code>{key}</code>
+									<br />
+									<Button
+										size="sm"
+										colorScheme="blue"
+										onClick={(e) => {
+											let flag = true;
+											if (flag) {
+												flag = false;
+												navigator.clipboard.writeText(
+													key
+												);
+												e.target.innerText = "Copied!";
+											}
+											setTimeout(() => {
+												e.target.innerText = "Copy Key";
+												flag = true;
+											}, 2000);
+										}}>
+										Copy Key
+									</Button>
+								</Card.Body>
+							</Card>
+						</div>
+						<form onSubmit={Home}>
+							<Button
+								isLoading={isLoading}
+								colorScheme="teal"
+								type="Submit">
+								Continue
+							</Button>
+						</form>
+					</VStack>
+				</Card>
 			)}
 		</>
 	);

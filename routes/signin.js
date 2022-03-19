@@ -24,7 +24,7 @@ router.route("/").post(async (req, res) => {
 	const access_token = accessToken({ uname });
 	const refresh_token = accessToken({
 		uname,
-		password: bcrypt.hash(password, process.env.ROUNDS),
+		password: bcrypt.hash(password, parseInt(process.env.ROUNDS)),
 	});
 	res.cookie("access", `${access_token}`, { maxAge: 1000 * 60 * 15 });
 	res.cookie("refresh", `${refresh_token}`, {

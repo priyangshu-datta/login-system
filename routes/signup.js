@@ -30,7 +30,7 @@ router.route("/").post(async (req, res) => {
 	const user = {
 		uname,
 		email,
-		password: await bcrypt.hash(password, process.env.ROUNDS),
+		password: await bcrypt.hash(password, parseInt(process.env.ROUNDS)),
 	};
 	const validateSchema = yup.object({
 		uname: yup
